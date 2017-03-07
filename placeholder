@@ -1,5 +1,0 @@
-var Heck = {
-  function (creeps) {
-  console.log("nope.jpg")
-  }
-}
