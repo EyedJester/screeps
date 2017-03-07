@@ -2,17 +2,20 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-	    if(creep.carry.energy < creep.carryCapacity) {
-            var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[1]);
+	    if(creep.carry.energy < creep.carryCapacity) { 	//If what you're currently carrying is less than what you can hold.
+            var sources = creep.room.find(FIND_SOURCES); 	//Creates an array called sources that holds the positions of each source.
+            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) { //If the creep tries to harvest and fails,
+                creep.moveTo(sources[0]);			//it will move towards the listed source.
             }
         }
-        else {
-            var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER) &&
-                            structure.energy < structure.energyCapacity // || structure.storeCapacity > structure.storeCapacity ;
+        else {							
+            var targets = creep.room.find(FIND_STRUCTURES, {	//Creates an array called 'targets' that holds the positions of
+                    filter: (structure) => {			//energy-holding structures.
+                        return (structure.structureType == STRUCTURE_EXTENSION //This jumbled mess just
+			|| structure.structureType == STRUCTURE_SPAWN 	       //decides what objects are
+			|| structure.structureType == STRUCTURE_CONTAINER) &&  //to be put in the 'targets' array.
+                        structure.energy < structure.energyCapacity // ||
+			structure.storeCapacity > structure.storeCapacity ;
                     }
             });
             if(targets.length > 0) {
@@ -23,7 +26,8 @@ var roleHarvester = {
                 //creep.moveTo(33, 11)
                 var containers = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure => {
-                        return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity
+                        return (structure.structureType == STRUCTURE_CONTAINER) && 
+			structure.store[RESOURCE_ENERGY] < structure.storeCapacity
                     })
                 })
             if(containers.length > 0) {
