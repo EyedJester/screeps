@@ -18,24 +18,31 @@ var roleHarvester = {
 			structure.storeCapacity > structure.storeCapacity ;
                     }
             });
-            if(targets.length > 0) {
+            if(targets.length > 0) {				//If the targets array holds more than nothing.
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
             } else {
-                //creep.moveTo(33, 11)
-                var containers = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure => {
+                
+		//creep.moveTo(33, 11) Used to make the harvester move to a certain space after being used up. Realized it was inefficient.
+		//Might make a variation of it later on.
+		
+                var containers = creep.room.find(FIND_STRUCTURES, {	       //Creates an array called 'containers'
+                    filter: (structure => {				       //that does the exact same thing that
+		    							       //'targets' does, except it singles out containers.
+									       //Should probably just make a global array called
+									       //'targets' at some point instead.
                         return (structure.structureType == STRUCTURE_CONTAINER) && 
 			structure.store[RESOURCE_ENERGY] < structure.storeCapacity
                     })
                 })
-            if(containers.length > 0) {
+            if(containers.length > 0) { //Aforementioned...
                 if(creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(containers[0]);
                 }
             } else {
-                creep.moveTo(33, 11);
+                creep.moveTo(33, 11);		//Once again, I'll probably end up making a variation of this later on, 
+						//because I don't like how inflexible this is.
             }
             }
             
