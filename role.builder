@@ -1,3 +1,6 @@
+
+/* This whole thing isn't even used. */
+
 var roleBuilder = {
     
     
