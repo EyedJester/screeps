@@ -1,4 +1,4 @@
-var roleBuilder = {le 
+var roleBuilder = {
     //creep.room.visual.line(creep.pos, target.pos, {color: 'red', style: 'dashed'});   TODO: FIX THIS FAILED ATTEMPT.
     run: function(creep, x) {
         try {
