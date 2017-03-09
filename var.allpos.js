@@ -1,4 +1,4 @@
-/*var footSoldierName = {          At this point, I'm pretty sure this will be useless.
+/*var footSoldierName = {          At this point, I'm pretty sure this will be useless. (It is.)
     
     if(footSoldier.length == 0) {
         var newName = 'soldier1'
