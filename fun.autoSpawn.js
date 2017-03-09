@@ -59,6 +59,7 @@ var autoSpawn = {
     }
     catch (err) {
     console.log('haha ur screwed ' + err)   //Self-fulfilling prophecy.
+    //nope.jpg
     }
     }
     
