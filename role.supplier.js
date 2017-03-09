@@ -1,3 +1,13 @@
+
+/////////////////////NOTICE/////////////////////
+//THIS SCRIPT IS OBSOLETE. THIS WAS A CREEP   //
+//CREATED DUE TO A LACK OF INFORMATION ON HOW //
+//ATTACK CREEPS ATTACK. MAY REFURBISH THIS    //
+//CREEP AS A WAY TO REFILL TOWERS EVENTUALLY. //
+//ACTUALLY...                                 //
+//TODO: REFURBISH THIS CREEP.                 //
+////////////////////////////////////////////////
+
 var roleSupplier = {
     
     run: function(creep) {
