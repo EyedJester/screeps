@@ -43,13 +43,13 @@ module.exports.loop = function () {
     
     var supplier = _.filter(Game.creeps, (creep) => creep.memory.role == 'supplier');
     
-    console.log('Harvesters: ' + harvesters.length + ',
-    Builders: ' + builder.length + ',
-    Devoted Upgraders: ' + devotedUpgrader.length + ',
-    Foot soldiers: ' + footSoldier.length + ',          //Shows the amount of each creep with the specified role
-    Repair men: ' + repairMan.length + ',               //in it's memory.
-    Emergency Carriers: ' + emCarrier.length + ',
-    Suppliers: ' + supplier.length);
+    console.log('Harvesters: ' + harvesters.length + ,
+    'Builders: ' + builder.length + ,
+    'Devoted Upgraders: ' + devotedUpgrader.length + ,
+    'Foot soldiers: ' + footSoldier.length + ,          //Shows the amount of each creep with the specified role
+    'Repair men: ' + repairMan.length + ,               //in it's memory.
+    'Emergency Carriers: ' + emCarrier.length + ,
+    'Suppliers: ' + supplier.length);
     
     try {
         
