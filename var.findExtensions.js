@@ -3,21 +3,14 @@ var findExtensions = {
     run: function(spawn) {
         try {
             
-            RoomObject.prototype.findExtensions = function () {
                 
+            RoomObject.prototype.findExtensions = function () {
                 var targets = this.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION)
+                        return (structure.structureType === STRUCTURE_EXTENSION)
                     }
-                    
-            
-            })
-            return targets.length;
+                return targets.length;
             }
-            
-            return spawn.findExtensions;
-            //console.log(targets.length);
-            
         }
         catch (err) {
             
