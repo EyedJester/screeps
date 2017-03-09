@@ -9,6 +9,8 @@ var findExtensions = {
                     filter: (structure) => {
                         return (structure.structureType === STRUCTURE_EXTENSION)
                     }
+                })
+                    
                 return targets.length;
             }
         }
