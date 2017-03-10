@@ -2,13 +2,20 @@
 /* This works. That is, if works means DOESN'T WORK AT ALL. Refrain from using this for now. */
 
 
-var findExtensions = require('var.findExtensions')          //Creates a array called 'findExtensions'
-                                                            //that pulls directly from the branch.
+RoomObject.prototype.findExtensions = function () {						//Perhaps I just need to add this in here?
+	var e = this.pos.find(STRUCTURE_EXTENSION, {
+		filter: (structure) => {
+			return (structure.structureType === STRUCTURE_EXTENSION)
+		}
+	})
+	return e.length
+}
+
 var autoSpawn = {
     
     run: function() {
         try {
-    if (findExtensions.run() < 5) {         //What was SUPPOSED to happen was that findExtensions would become
+    if (Game.spawns['Spawn1'].findExtensions < 5) {         //What was SUPPOSED to happen was that findExtensions would become
                                             //an array, and if that array was greater than five, all of this
                                             //would activate. It didn't work out.
     if(harvesters.length < 2) {
@@ -56,8 +63,7 @@ var autoSpawn = {
     }
     }
     catch (err) {
-    console.log('haha ur screwed ' + err)   //Self-fulfilling prophecy.
-    //nope.jpg
+    console.log('haha ur screwed ' + err)
     }
     }
     

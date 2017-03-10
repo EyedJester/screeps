@@ -7,8 +7,8 @@ var findExtensions = {
             RoomObject.prototype.findExtensions = function () {
                 var targets = this.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType === STRUCTURE_EXTENSION)
-                    }
+                        return (structure.structureType === STRUCTURE_EXTENSION)	//Hopefully rendered obsolete. 
+                    }																//TODO: Create another branch and delete.
                 })
                     
                 return targets.length;
