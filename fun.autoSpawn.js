@@ -63,11 +63,7 @@ var autoSpawn = {
             
             if (extensions.length < 5) { 
                 
-                if (boring === 0) {
-                        newName = Game.spawns['Spawn1'].createCreep([MOVE],
-                        undefined, {role: 'failure'});
-                        recount('ugh','ugh');
-                    }
+               
         
                 if (harvesters.length < 1) {
                     var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
@@ -77,6 +73,12 @@ var autoSpawn = {
                                                                                               ' There are probably ' + 
                                                                                               harvester.length + ' harvester(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
+                
+                 if (boring === 0) {
+                        newName = Game.spawns['Spawn1'].createCreep([MOVE],
+                        undefined, {role: 'failure'});
+                        recount('ugh','ugh');
+                    }
         
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
