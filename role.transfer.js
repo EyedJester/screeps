@@ -2,7 +2,7 @@ var roleTransfer = {
 	
 	run: function(creep) {
 		
-		if (creep.carry.energy) < creep.carryCapacity { creep.memory.done = false }
+		if (creep.carry.energy < creep.carryCapacity) { creep.memory.done = false }
 		if (creep.carry.energy === creep.carryCapacity) { creep.memory.done = true }
 		
 		if (creep.memory.done === false) { 
