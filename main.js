@@ -1,6 +1,6 @@
 var roleHarvester = require('role.harvester');                     //A bunch of vars requiring other modules to exist.
-var roleBuilder = require('role.newbuilder')
-var roleDevotedUpgrader = require('role.devotedupgrader')
+var roleBuilder = require('role.newBuilder')
+var roleDevotedUpgrader = require('role.devotedUpgrader')
 var roleRepairman = require('role.repairman')
 var findSources = require('var.findSources')
 var autoSpawn = require('fun.autoSpawn');
