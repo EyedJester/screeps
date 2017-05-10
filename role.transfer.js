@@ -7,9 +7,11 @@ var roleTransfer = {
 		
 		if (creep.memory.done === false) { 
 			
+			console.log("Here I go! Maybe...")
+			
 			var supplies = creep.room.find(FIND_MY_CREEPS, {
 				filter: (creep) => {
-					return (creep.memory.role === 'harvesters') && (creep.memory.help === true);
+					return (creep.memory.role === 'harvester') && (creep.memory.help === true);
 				}
 			});
 			
