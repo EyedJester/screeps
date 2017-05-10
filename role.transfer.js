@@ -2,7 +2,10 @@ var roleTransfer = {
 	
 	run: function(creep) {
 		
-		if (creep.carry.energy < creep.carryCapacity) { 
+		if (creep.carry.energy) < creep.carryCapacity { creep.memory.done = false }
+		if (creep.carry.energy === creep.carryCapacity) { creep.memory.done = true }
+		
+		if (creep.memory.done === false) { 
 			
 			var supplies = creep.room.find(FIND_MY_CREEPS, {
 				filter: (creep) => {
@@ -14,11 +17,11 @@ var roleTransfer = {
 		
 		}
 		
-		if (creep.carry.energy === creep.carryCapacity) {
+		if (creep.memory.done === true) {
 			
 			var refill = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_CONTAINER);
+					return (structure.structureType == STRUCTURE_SPAWN);
 				}
 			});
 			
