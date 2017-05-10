@@ -52,6 +52,7 @@ console.log(extensions.length)
         real.length + ' $(type)(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
     }
     
+    var boring = 0;
 
 var autoSpawn = {
     
@@ -61,6 +62,12 @@ var autoSpawn = {
             
             
             if (extensions.length < 5) { 
+                
+                if (boring === 0) {
+                        newName = Game.spawns['Spawn1'].createCreep([MOVE],
+                        undefined, {role: 'failure'});
+                        recount('ugh','ugh');
+                    }
         
                 if (harvesters.length < 1) {
                     var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
