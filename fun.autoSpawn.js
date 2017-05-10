@@ -58,33 +58,47 @@ var autoSpawn = {
                 if (harvesters.length < 1) {
                     var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
-                    if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', ' + harvesters.length); }
+                    if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
+                                                     harvester.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
+                                                                                              ' There are probably ' + 
+                                                                                              harvester.length + ' harvester(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
                 }
         
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'transfer', done: false})
-                    console.log('Spawning new transfer: ' + newName + ', ' + transfers.length);
+                    if (newName == OK) { console.log('Spawning new transfer: ' + newName + ', there are ' + 
+                                                     transfers.length + ' transfer(s).'); } else { console.log ('Attempting to spawn transfer.' +
+                                                                                              ' There are probably ' + 
+                                                                                              transfers.length + ' transfer(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
                 }
         
                 else if (devotedUpgrader.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE, MOVE],
                     undefined, {role: 'devotedUpgrader'});
-                    console.log('Spawning new devoted upgrader: ' + newName + ', ' + devotedUpgrader.length);
+                    if (newName == OK) { console.log('Spawning new devoted upgrader: ' + newName + ', there are ' + 
+                                                     devotedUpgrader.length + ' devoted upgrader(s).'); } else { console.log ('Attempting to spawn devoted upgrader.' +
+                                                                                              ' There are probably ' + 
+                                                                                              devotedUpgrader.length + ' devoted upgrader(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
                 }
         
                 else if (builder.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE],
                     undefined, {role: 'builder'});
-                    if (newName == OK) { console.log('Spawning new builder: ' + newName + ', ' + builder.length); } else { console.log ('Attempting to spawn builder. There are probably '
-                    + builder.length + ' builder(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                    if (newName == OK) { console.log('Spawning new builder: ' + newName + ', there are ' + 
+                                                     builder.length + ' builder(s).'); } else { console.log ('Attempting to spawn builder.' +
+                                                                                              ' There are probably ' + 
+                                                                                              builder.length + ' builder(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
                 }
 
                 else if (repairMan.length < 2) {
                     if (Memory.goahead == true) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE],
                     undefined, {role: 'repairman'});
-                    console.log('Spawning new repairman: ' + newName + ', ' + repairMan.length);
+                    if (newName == OK) { console.log('Spawning new repairman: ' + newName + ', there are ' + 
+                                                     repairMan.length + ' repairmen.'); } else { console.log ('Attempting to spawn repairman.' +
+                                                                                              ' There are probably ' + 
+                                                                                              repairMan.length + ' repairmen, and there\'s ' + spawn.energy + ' in the spawn.' ) }
                 }
             }
             
