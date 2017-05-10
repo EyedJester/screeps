@@ -44,6 +44,13 @@ console.log(extensions.length)
         spawnThis.call(this, howMany);
         this.role = 'builder';
     }
+
+    function recount (type,real) {
+        if (newName == OK) { console.log('Spawning new $(type): ' + newName + ', there are ' + 
+        real.length + ' $(type)(s).'); } else { console.log ('Attempting to spawn $(type).' +
+        ' There are probably ' + 
+        real.length + ' $(type)(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+    }
     
 
 var autoSpawn = {
@@ -61,7 +68,7 @@ var autoSpawn = {
                     if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
                                                      harvester.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
                                                                                               ' There are probably ' + 
-                                                                                              harvester.length + ' harvester(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                                                                                              harvester.length + ' harvester(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
         
                 else if (transfers.length < 1) {
@@ -70,7 +77,7 @@ var autoSpawn = {
                     if (newName == OK) { console.log('Spawning new transfer: ' + newName + ', there are ' + 
                                                      transfers.length + ' transfer(s).'); } else { console.log ('Attempting to spawn transfer.' +
                                                                                               ' There are probably ' + 
-                                                                                              transfers.length + ' transfer(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                                                                                              transfers.length + ' transfer(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
         
                 else if (devotedUpgrader.length < 2) {
@@ -79,7 +86,7 @@ var autoSpawn = {
                     if (newName == OK) { console.log('Spawning new devoted upgrader: ' + newName + ', there are ' + 
                                                      devotedUpgrader.length + ' devoted upgrader(s).'); } else { console.log ('Attempting to spawn devoted upgrader.' +
                                                                                               ' There are probably ' + 
-                                                                                              devotedUpgrader.length + ' devoted upgrader(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                                                                                              devotedUpgrader.length + ' devoted upgrader(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
         
                 else if (builder.length < 2) {
@@ -88,7 +95,7 @@ var autoSpawn = {
                     if (newName == OK) { console.log('Spawning new builder: ' + newName + ', there are ' + 
                                                      builder.length + ' builder(s).'); } else { console.log ('Attempting to spawn builder.' +
                                                                                               ' There are probably ' + 
-                                                                                              builder.length + ' builder(s), and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                                                                                              builder.length + ' builder(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
 
                 else if (repairMan.length < 2) {
@@ -98,8 +105,14 @@ var autoSpawn = {
                     if (newName == OK) { console.log('Spawning new repairman: ' + newName + ', there are ' + 
                                                      repairMan.length + ' repairmen.'); } else { console.log ('Attempting to spawn repairman.' +
                                                                                               ' There are probably ' + 
-                                                                                              repairMan.length + ' repairmen, and there\'s ' + spawn.energy + ' in the spawn.' ) }
+                                                                                              repairMan.length + ' repairmen, and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
+                    
+                    if (boring === 0) {
+                        newName = Game.spawns['Spawn1'].createCreep([MOVE],
+                        undefined, {role: 'failure'});
+                        recount(boring,boring);
+                    }
             }
             
             }
