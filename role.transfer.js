@@ -1,4 +1,4 @@
-var roleSupplier = {
+var roleTransfer = {
     
     run: function(creep) {
         
