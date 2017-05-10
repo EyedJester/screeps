@@ -1,17 +1,23 @@
-var roleHarvester = require('role.harvester');                     //A bunch of vars requiring other branches to exist.
-var roleUpgrader = require('role.upgrader');
+var roleHarvester = require('role.harvester');                     //A bunch of vars requiring other modules to exist.
 var roleBuilder = require('role.newbuilder')
 var roleDevotedUpgrader = require('role.devotedupgrader')
-var roleTester = require('role.tester')
 var roleRepairman = require('role.repairman')
-var roleFootSoldier = require('role.footsoldier')
-var roleEMcarrier = require('role.carrier')
-var roleSupplier = require('role.supplier')
 var findSources = require('var.findSources')
-var findExtensions = require ('var.findExtensions')
 var autoSpawn = require('fun.autoSpawn');
+var extensions = require('fun.autoSpawn');
+var chant = ['CmdSharp', "if you're", 'reading', "this", "please", "let us dig", "and don't", "kill us.."];
+var roleTransfer = require('role.transfer');
+
+Memory.goahead = false;
+
+
+
+Memory.i = 0;
 
 module.exports.loop = function () {
+    console.log(Game.cpu.getUsed());
+    Memory.i++;
+    if (Memory.i === chant.length) { Memory.i = 0 }
     try {
     for(var name in Memory.creeps) {                                    //For every name that exists in the Memory of 'creeps'.
         if(!Game.creeps[name]) {                                        //Checks to see if the name still exists.
@@ -26,114 +32,83 @@ module.exports.loop = function () {
                                                                                             //by filtering out all the creeps
                                                                                             //that don't have the memory of
                                                                                             //being one.
-    
-    var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');       //Same for the rest of these,
-                                                                                            //but replace 'harvesters' with
-                                                                                            //the specified role.
-    
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     
     var devotedUpgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'devotedUpgrader');
-    
-    var footSoldier = _.filter(Game.creeps, (creep) => creep.memory.role == 'footSoldier');
-    
+
     var repairMan = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
     
-    var emCarrier = _.filter(Game.creeps, (creep) => creep.memory.role == 'emCarrier');
+    var transfers = _.filter(Game.creeps, (creep) => creep.memory.role == 'transfer');
     
-    var supplier = _.filter(Game.creeps, (creep) => creep.memory.role == 'supplier');
+    function pick (l,c,t){
+    if(l>c){
+    l = l - 1;
+    t[l].suicide();
+    console.log(t[l])
+    }
+    }
     
-    console.log('Harvesters: ' + harvesters.length + ,
-    'Builders: ' + builder.length + ,
-    'Devoted Upgraders: ' + devotedUpgrader.length + ,
-    'Foot soldiers: ' + footSoldier.length + ,          //Shows the amount of each creep with the specified role
-    'Repair men: ' + repairMan.length + ,               //in it's memory.
-    'Emergency Carriers: ' + emCarrier.length + ,
-    'Suppliers: ' + supplier.length);
+    console.log('Harvesters: ' + harvesters.length + 
+    ', Builders: ' + builder.length + 
+    ', Devoted Upgraders: ' + devotedUpgrader.length +   //Shows the amount of each creep with the specified role
+    ', Repair men: ' + repairMan.length +                //in it's memory.
+    ', Transfer: ' + transfers.length);
+    
+    if (devotedUpgrader.length === 2 && builder.length === 2 && harvesters.length === 1 && transfers.length === 1) { Memory.ideal = true; } else { Memory.ideal = false; }
+    
+    console.log('Is everything ideal? ' + Memory.ideal)
+    if (Memory.ideal === true) { Game.notify('Right now, conditions are PERFECT.    ~ Overseer') }
     
     try {
         
-    //autoSpawn.run()
-    ech         //Added this in since although 'autoSpawn' doesn't work correctly, it doesn't return any errors.
-                //Thus not triggering the catch.
-                //So literally everything dies. 
-                //Hope to fix that soon.
+    autoSpawn.run()
+
     }
     catch (err) {
-    if(harvesters.length < 2) {            //If there are less than two creeps with the memory of being a harvester...
-        var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
-        undefined, {role: 'harvester'});                                            //Creates a variable called newName, which
-                                                                                    //is the command for spawning a creep.
-                                                                                    //The name is left as undefined, so the
-                                                                                    //game randomly chooses one for you.
-        console.log('Spawning new harvester: ' + newName);                          //The random name is then printed
-                                                                                    //along with the specified role.
-    }
-    
-    if(devotedUpgrader.length < 2 && harvesters.length == 2) {                      //Same, except it makes sure that there are
-                                                                                    //two harvesters.
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE, MOVE], undefined, {role: 'devotedUpgrader'});
-        console.log('Spawning new devoted upgrader: ' + newName);
-    }
-    
-    if(builder.length < 2 && harvesters.length == 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE], undefined, {role: 'builder'});
-        console.log('Spawning new builder: ' + newName);
-    }
-    
-    if(repairMan.length < 2 && harvesters.length == 2 && builder.length == 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairman'});
-        console.log('Spawning new repairman: ' + newName);
-    }
-     
-    if(footSoldier.length < 7 && harvesters.length == 2 && repairMan.length == 100) {
-    Game.spawns['Spawn1'].createCreep([MOVE, ATTACK, TOUGH, CARRY, TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,], newName, {role: 'footSoldier'});
-    }
-    
-    if(footSoldier.length < 11 && harvesters.length == 2 && harvesters.length == 1000) {
-        Game.spawns['Spawn1'].createCreep([MOVE, MOVE, ATTACK, ATTACK, ATTACK, ATTACK, CARRY, CARRY, TOUGH, TOUGH, TOUGH], newName, {role: 'footSoldier'});
-    }
-    
-    if (emCarrier.length < -1 && harvesters.length == 2) {
-        Game.spawns['Spawn1'].createCreep([MOVE,MOVE,MOVE,CARRY,CARRY,CARRY], undefined, {role: 'emCarrier'});
-    }
-    console.log('I mean... You messed up somewhere. ' + err)              //Error for the try/catch.
+    console.log("You messed up this time! Main module, autospawning. " + err)
     }
     
     for(var name in Game.creeps) {                      //For every creep in your game.
         var creep = Game.creeps[name];                  //Creates a variable called creep that contains the name of the creep it's
         if(creep.memory.role == 'harvester') {          //focused on.
             roleHarvester.run(creep);
-            //findSources.run(creep);
-            //findExtensions.run(creep);
+            //creep.say(chant[Memory.i]);
+            if (harvesters.length > 1) {
+                Game.notify("TOO MANY HARVESTERS!! We love'em, but we gotta get rid of some.    ~ Overseer")
+                pick(harvesters.length, 1, harvesters);
+            }
         }
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
+        
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
+            if (builder.length > 2) {
+                Game.notify('TOO MANY BUILDERS!! Currently exterminating.    ~ Overseer')
+                pick(builder.length, 2 , builder)
+            }
         }
         if(creep.memory.role == 'devotedUpgrader') {
             roleDevotedUpgrader.run(creep);
+            if (devotedUpgrader.length > 2) {
+                Game.notify('TOO MANY UPGRADERS!! Currently exterminating.   ~ Overseer')
+                pick(devotedUpgrader.length, 2, devotedUpgrader)
+            }
         }
         
-        if(creep.memory.role == 'repairman') {
-            roleRepairman.run(creep);  
+        if(creep.memory.role == 'transfer') {
+            roleTransfer.run(creep);
+            if (transfers.length > 1) {
+                Game.notify('TOO MANY TRANSFER DUDES!! Exterminating now.   ~ Overseer');
+                pick(transfers.length, 1, transfers)
+            }
         }
-        
-        if(creep.memory.role == 'footSoldier') {
-            roleFootSoldier.run(creep)
-        }
-        
-        if(creep.memory.role == 'emCarrier') {
-            roleEMcarrier.run(creep);
-        }
-        
-        if(creep.memory.roll == 'supplier') {
-            roleSupplier.run(creep);
-        }
+} 
+
+console.log('i = ' + Memory.i);
+console.log(Game.cpu.getUsed());
+console.log();
+
 }
-}
+
 catch (err) {
     
     var insult = Math.floor((Math.random() * 7) + 1);                                               //One of my favorite bits of code
