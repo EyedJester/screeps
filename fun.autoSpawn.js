@@ -90,6 +90,7 @@ var autoSpawn = {
                                                      devotedUpgrader.length + ' devoted upgrader(s).'); } else { console.log ('Attempting to spawn devoted upgrader.' +
                                                                                               ' There are probably ' + 
                                                                                               devotedUpgrader.length + ' devoted upgrader(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                    console.log(devotedUpgrader.length);
                 }
         
                 else if (builder.length < 2) {
