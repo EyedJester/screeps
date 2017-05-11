@@ -103,7 +103,7 @@ var autoSpawn = {
                                                                                               ' There are probably ' + 
                                                                                               builder.length + ' builder(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 */
-                    recount(builder,builder)
+                    recount(builder,builder);
                 }
 
                 else if (repairMan.length < 2) {
@@ -115,13 +115,6 @@ var autoSpawn = {
                                                                                               ' There are probably ' + 
                                                                                               repairMan.length + ' repairmen, and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
-                    
-                    if (boring === 0) {
-                        newName = Game.spawns['Spawn1'].createCreep([MOVE],
-                        undefined, {role: 'failure'});
-                        recount(boring,boring);
-                    }
-            }
             
             }
             
