@@ -6,22 +6,43 @@ var roleDevotedUpgrader = {
         if(creep.memory.upgrading && creep.carry.energy === 0) {
             creep.memory.upgrading = false;
 	    }
+		
 	    if(!creep.memory.upgrading && creep.carry.energy === creep.carryCapacity) {
 	        creep.memory.upgrading = true;
 	    }
+		
 
 	    if(creep.memory.upgrading) {
+			
             if(creep.upgradeController(creep.room.controller) === ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller);
             }
+			
         }
-        else {
+        else 
+		{
             var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[1]);
-            }
-        }
+            
+			if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
+		    
+				if (creep.moveTo(sources[1] == ERR_NO_PATH) {
+			
+					creep.moveTo(sources[0]);
+	    
+				} 
+				else
+				{
+                
+				creep.moveTo(sources[1]);
+	    
+				}
+	    
+			}
+        
+		}
+	
 	}
+
 };
 
 module.exports = roleDevotedUpgrader;
