@@ -48,10 +48,10 @@ console.log(extensions.length)
     }
 
     function recount (type,real) {
-        if (newName == OK) { console.log('Spawning new $(type): ' + newName + ', there are ' + 
-        real.length + ' $(type)(s).'); } else { console.log ('Attempting to spawn $(type).' +
+        if (newName == OK) { console.log('Spawning new ' + type + ': ' + newName + ', there are ' + 
+        real.length + ' $(type)(s).'); } else { console.log ('Attempting to spawn ' + type + '.' +
         ' There are probably ' + 
-        real.length + ' $(type)(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+        real.length + ' '  + type + '(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
     }
     
 var autoSpawn = {
@@ -114,6 +114,7 @@ var autoSpawn = {
                                                      repairMan.length + ' repairmen.'); } else { console.log ('Attempting to spawn repairman.' +
                                                                                               ' There are probably ' + 
                                                                                               repairMan.length + ' repairmen, and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                    }   
                 }
             
             }
