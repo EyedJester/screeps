@@ -7,6 +7,8 @@ const y = Game.spawns['Spawn1'].pos.y;
 
 console.log(extensions.length)
 
+    var newName;
+
     var spawn = Game.spawns['Spawn1'];                                  
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');    
@@ -64,7 +66,7 @@ var autoSpawn = {
                
         
                 if (harvesters.length < 1) {
-                    var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
+                    newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
                     if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
                                                      harvesters.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
