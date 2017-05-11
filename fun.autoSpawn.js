@@ -67,9 +67,9 @@ var autoSpawn = {
                     var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
                     if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
-                                                     harvester.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
+                                                     harvesters.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
                                                                                               ' There are probably ' + 
-                                                                                              harvester.length + ' harvester(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                                                                                              harvesters.length + ' harvester(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 }
                 
                 
