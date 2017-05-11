@@ -106,37 +106,37 @@ var autoSpawn = {
                 if(harvesters.length < 1) {
                     var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, WORK, CARRY, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
-                    console.log('Spawning new harvester: ' + newName + ', ' + harvesters.length);
+                    recount('harvester', harvesters);
                 }
         
                 else if (transfers.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    undefined, {role: 'transfer', done: false})
-                    console.log('Spawning new transfer: ' + newName + ', ' + transfers.length);
+                    undefined, {role: 'transfer', done: false});
+                    recount('transfer', transfers);
                 }
         
                 else if (devotedUpgrader.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'devotedUpgrader'});
-                    console.log('Spawning new devoted upgrader: ' + newName + ', ' + devotedUpgrader.length);
+                    recount('devoted upgrader', devotedUpgrader);
                 }
         
                 else if (builder.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE],
                     undefined, {role: 'builder'});
-                    console.log('Spawning new builder: ' + newName + ', ' + builder.length);
+                    recount('builder', builder);
                 }
 
                 else if (repairMan.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'repairman'});
-                    console.log('Spawning new repairman: ' + newName + ', ' + repairMan.length);
+                    recount('repairman', repairMan);
                 }
             }
         }
         
         catch (err) {
-            console.log('haha ur screwed ' + err)
+            console.log('haha ur screwed. what a complete and utter failure you are, lol. ' + err)
         }
     }
 }
