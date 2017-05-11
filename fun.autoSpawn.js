@@ -103,7 +103,7 @@ var autoSpawn = {
                                                                                               ' There are probably ' + 
                                                                                               builder.length + ' builder(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
                 */
-                    recount('builder','builder')
+                    recount(builder,builder)
                 }
 
                 else if (repairMan.length < 2) {
