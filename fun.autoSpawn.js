@@ -68,10 +68,12 @@ var autoSpawn = {
                 if (harvesters.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
-                    if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
+                    /*if (newName == OK) { console.log('Spawning new harvester: ' + newName + ', there are ' + 
                                                      harvesters.length + ' harvester(s).'); } else { console.log ('Attempting to spawn harvester.' +
                                                                                               ' There are probably ' + 
                                                                                               harvesters.length + ' harvester(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                    */
+                    recount('harvester',harvesters)
                 }
                 
                 
@@ -79,11 +81,12 @@ var autoSpawn = {
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'transfer', done: false})
-                    if (newName == OK) { console.log('Spawning new transfer: ' + newName + ', there are ' + 
+                    /*if (newName == OK) { console.log('Spawning new transfer: ' + newName + ', there are ' + 
                                                      transfers.length + ' transfer(s).'); } else { console.log ('Attempting to spawn transfer.' +
                                                                                               ' There are probably ' + 
                                                                                               transfers.length + ' transfer(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
-                    console.log(transfers.length);
+                    */
+                    recount('transfer',transfers)
                 }
         
                 else if (devotedUpgrader.length < 2) {
