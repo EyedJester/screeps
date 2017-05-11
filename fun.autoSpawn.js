@@ -81,6 +81,7 @@ var autoSpawn = {
                                                      transfers.length + ' transfer(s).'); } else { console.log ('Attempting to spawn transfer.' +
                                                                                               ' There are probably ' + 
                                                                                               transfers.length + ' transfer(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                    console.log(transfers.length);
                 }
         
                 else if (devotedUpgrader.length < 2) {
