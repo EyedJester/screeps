@@ -56,23 +56,17 @@ console.log(extensions.length)
     
 var autoSpawn = {
     
-    
     run: function() {
         try {
             
-            
             if (extensions.length < 5) { 
                 
-               
-        
                 if (harvesters.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
                     undefined, {role: 'harvester', help: false});
                     recount('harvester',harvesters);
                 }
                 
-                
-        
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'transfer', done: false});
