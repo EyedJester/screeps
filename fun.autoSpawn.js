@@ -96,10 +96,12 @@ var autoSpawn = {
                 else if (builder.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE],
                     undefined, {role: 'builder'});
-                    if (newName == OK) { console.log('Spawning new builder: ' + newName + ', there are ' + 
+                    /*if (newName == OK) { console.log('Spawning new builder: ' + newName + ', there are ' + 
                                                      builder.length + ' builder(s).'); } else { console.log ('Attempting to spawn builder.' +
                                                                                               ' There are probably ' + 
                                                                                               builder.length + ' builder(s), and there\'s ' + spawn.energy + ' energy in the spawn.' ) }
+                */
+                    recount(builder,builder)
                 }
 
                 else if (repairMan.length < 2) {
