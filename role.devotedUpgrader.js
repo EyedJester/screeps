@@ -25,9 +25,12 @@ var roleDevotedUpgrader = {
             
 			if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
 		    
-				if (creep.moveTo(sources[1]) == ERR_NO_PATH) {
-			
-					creep.moveTo(sources[0]);
+				if (creep.moveTo(sources[1]) === ERR_NO_PATH) {
+					
+					if creep.harvest(sources[0] === ERR_NOT_IN_RANGE) {
+						
+						creep.moveTo(sources[0]);
+					}
 	    
 				} 
 				else
