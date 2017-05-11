@@ -63,32 +63,32 @@ var autoSpawn = {
                 
                 if (harvesters.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE],
-                    undefined, {role: 'harvester', help: false});
+                    undefined, {role: 'harvester', help: false, dying: 'nOPE'});
                     recount('harvester',harvesters);
                 }
                 
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
-                    undefined, {role: 'transfer', done: false});
+                    undefined, {role: 'transfer', done: false, dying: 'nOPE'});
                     recount('transfer',transfers);
                 }
         
                 else if (devotedUpgrader.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE, MOVE],
-                    undefined, {role: 'devotedUpgrader'});
+                    undefined, {role: 'devotedUpgrader', dying: 'nOPE'});
                     recount('devoted upgrader',devotedUpgrader);
                 }
         
                 else if (builder.length < 2) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE],
-                    undefined, {role: 'builder'});
+                    undefined, {role: 'builder', dying:'nOPE'});
                     recount('builder',builder);
                 }
 
                 else if (repairMan.length < 2) {
                     if (Memory.goahead == true) {
                     newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE],
-                    undefined, {role: 'repairman'});
+                    undefined, {role: 'repairman', dying:'nOPE'});
                     recount('repairman',repairMan);
                 }   
             }
