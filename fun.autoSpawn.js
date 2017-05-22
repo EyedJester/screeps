@@ -66,7 +66,7 @@ var autoSpawn = {
                     undefined, {role: 'harvester', help: false, dying: 'nOPE'});
                     recount('harvester',harvesters);
                 }
-                a
+                
                 else if (transfers.length < 1) {
                     newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,MOVE,MOVE,MOVE],
                     undefined, {role: 'transfer', done: false, dying: 'nOPE'});
